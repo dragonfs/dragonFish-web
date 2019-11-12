@@ -8,7 +8,7 @@ module.exports = {
    * 開發環境
    */
   mode: "development",
-  entry: "./src/index.js",
+  entry: "./src/index.ts",
   /**
    * 我们将使用 inline-source-map 选项，这有助于解释说明示例意图（此配置仅用于示例，不要用于生产环境
    */
@@ -21,6 +21,9 @@ module.exports = {
     contentBase: "./dist",
     hot: true
   },
+  resolve: {
+    extensions: [".json", ".ts", ".tsx", ".js"]
+  },
   module: {
     rules: [
       {
@@ -32,13 +35,14 @@ module.exports = {
         exclude: /node_modules/, 
         use: ["babel-loader","source-map-loader"],
         enforce: "pre"
-      }
+      },
+      { test: /\.ts|tsx?$/, loader: "ts-loader" }
     ]
   },
   plugins: [
     // new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({
-      title: "管理输出",
+      title: "ee",
       template: './template/index.html'
     }),
     new webpack.HotModuleReplacementPlugin()

@@ -1,7 +1,7 @@
-import React from 'react';
-import ReactDom from 'react-dom';
+import * as React from 'react';
+import * as ReactDom from 'react-dom';
 
-function test() {
+function test(test?: any): void {
     test.type = 'dog'
 }
 
@@ -15,10 +15,12 @@ class Dog {
 
 
 
-class App extends React.Component{
+class App extends React.Component<any, any>{
 
-    constructor() {
-        super();
+    dog: Dog;
+
+    constructor(props: any) {
+        super(props);
 
         this.dog = new Dog();
 
@@ -31,7 +33,7 @@ class App extends React.Component{
     render() {
         return(
             <div>
-                33233
+                hello, drgon
             </div>
         )
     }
