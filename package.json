@@ -1,0 +1,41 @@
+{
+  "dependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-decorators": "^7.7.0",
+    "@babel/plugin-transform-typescript": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "css-loader": "^3.2.0",
+    "html-webpack-plugin": "^3.2.0",
+    "react": "^16.11.0",
+    "react-dom": "^16.11.0",
+    "react-router": "^5.1.2",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.0.0",
+    "webpack": "^4.41.2",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "name": "drgonfish-web",
+  "description": "",
+  "version": "1.0.0",
+  "main": "webpack.config.js",
+  "devDependencies": {
+    "webpack-cli": "^3.3.10"
+  },
+  "scripts": {
+    "dev": "webpack --config ./webpack.config.js",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dragonfs/dragonFish-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dragonfs/dragonFish-web/issues"
+  },
+  "homepage": "https://github.com/dragonfs/dragonFish-web#readme"
+}
