@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
+import './App.css';
 
 function test(test?: any): void {
     test.type = 'dog'
@@ -33,7 +34,7 @@ class App extends React.Component<any, any>{
     render() {
         return(
             <div>
-                hello, drgon
+                hello, drgon333
             </div>
         )
     }
