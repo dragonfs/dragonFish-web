@@ -1,6 +1,6 @@
 import * as React from "react";
 
-export default class IElement extends React.Component<any, any>{
+export default class Contact extends React.Component<any, any>{
     constructor(props: any) {
         super(props)
     }

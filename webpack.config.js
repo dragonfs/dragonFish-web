@@ -2,11 +2,10 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const webpack = require("webpack");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  /**
-   * 開發環境
-   */
+  
   mode: "development",
   entry: "./src/index.ts",
   /**
@@ -19,32 +18,101 @@ module.exports = {
   },
   devServer: {
     contentBase: "./dist",
+    historyApiFallback: true,
+    inline: true,
     hot: true
   },
   resolve: {
     extensions: [".json", ".ts", ".tsx", ".js"]
   },
+  
+  optimization: {
+    splitChunks: {
+      chunks: 'async',
+      minSize: 30000,
+      maxSize: 0,
+      minChunks: 1,
+      maxAsyncRequests: 5,
+      maxInitialRequests: 3,
+      automaticNameDelimiter: '~',
+      name: true,
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: -10
+        },
+        default: {
+          minChunks: 2,
+          priority: -20,
+          reuseExistingChunk: true
+        }
+      }
+    }
+  },
+
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ["style-loader", "css-loader"]
+        use: [
+          // {
+          //   loader: MiniCssExtractPlugin.loader,
+          //   options: {
+          //     // you can specify a publicPath here
+          //     // by default it use publicPath in webpackOptions.output
+          //     // publicPath: "../"
+          //   }
+          // },
+          "style-loader",
+          "css-loader"
+        ]
       },
       {
         test: /\.js|jsx$/,
-        exclude: /node_modules/, 
-        use: ["babel-loader","source-map-loader"],
+        exclude: /node_modules/,
+        use: ["babel-loader", "source-map-loader"],
         enforce: "pre"
       },
-      { test: /\.ts|tsx?$/, loader: "ts-loader" }
+      { test: /\.ts|tsx?$/, loader: "ts-loader" },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: "style-loader" // creates style nodes from JS strings
+          },
+          {
+            loader: "css-loader", // translates CSS into CommonJS
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: "less-loader", // compiles Less to CSS
+            // options: {
+            //   sourceMap: true
+            // }
+          },
+        ]
+      }
     ]
   },
   plugins: [
-    // new CleanWebpackPlugin(['dist']),
+
     new HtmlWebpackPlugin({
       title: "ee",
-      template: './template/index.html'
+      template: "./template/index.html",
+      inject: true
     }),
+
+    new webpack.BannerPlugin({
+      banner: 'hash:[hash], chunkhash:[chunkhash], name:[name], filebase:[filebase], query:[query], file:[file]'
+    }),
+
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    }),
+
     new webpack.HotModuleReplacementPlugin()
   ]
 };
