@@ -1,19 +1,6 @@
 {
   "dependencies": {
-    "@babel/core": "^7.7.2",
-    "@babel/plugin-proposal-decorators": "^7.7.0",
-    "@babel/plugin-transform-typescript": "^7.7.2",
-    "@babel/preset-env": "^7.7.1",
-    "@babel/preset-react": "^7.7.0",
-    "@loadable/component": "^5.10.3",
-    "@types/loadable__component": "^5.10.0",
-    "@types/react": "^16.9.11",
-    "@types/react-dom": "^16.9.4",
-    "@types/react-router": "^5.1.3",
-    "@types/react-router-dom": "^5.1.2",
     "antd": "^3.25.2",
-    "babel-loader": "^8.0.6",
-    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
@@ -26,23 +13,39 @@
     "react-router": "^5.1.2",
     "react-router-dom": "^5.1.2",
     "source-map-loader": "^0.2.4",
-    "style-loader": "^1.0.0",
-    "webpack": "^4.41.2",
-    "webpack-dev-server": "^3.9.0"
+    "style-loader": "^1.0.0"
   },
   "name": "drgonfish-web",
   "description": "",
   "version": "1.0.0",
   "main": "webpack.config.js",
   "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/plugin-proposal-decorators": "^7.7.0",
+    "@babel/plugin-transform-typescript": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "@babel/preset-react": "^7.7.0",
+    "@loadable/component": "^5.10.3",
+    "@types/loadable__component": "^5.10.0",
+    "@types/react": "^16.9.11",
+    "@types/react-dom": "^16.9.4",
+    "@types/react-router": "^5.1.3",
+    "@types/react-router-dom": "^5.1.2",
+    "babel-loader": "^8.0.6",
+    "clean-webpack-plugin": "^3.0.0",
+    "cross-env": "^7.0.2",
+    "npm-install-webpack-plugin": "^4.0.5",
+    "terser-webpack-plugin": "^2.3.6",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.2",
-    "webpack-cli": "^3.3.10"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.9.0"
   },
   "scripts": {
-    "dev": "webpack --config ./webpack.config.js",
-    "build": "webpack --config ./webpack.prod.config.js",
-    "start": "webpack-dev-server"
+    "dev": "tsc-w && webpack --config ./webpack.config.js",
+    "build": "cross-env NODE_ENV=production && webpack --config ./webpack.prod.config.js",
+    "start": "webpack-dev-server --config ./webpack.dev.config.js "
   },
   "repository": {
     "type": "git",
