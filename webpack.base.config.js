@@ -4,6 +4,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const {TestPlugin} = require('./webpack-test-plugin/webpack-test-plugin');
 // const NpmInstallPlugin = require("npm-install-webpack-plugin");
 const ROOT_PATH = process.cwd();
 const SRC_PATH = path.join(ROOT_PATH, "src");
@@ -149,6 +150,8 @@ module.exports = {
 
   plugins: [
     new webpack.ProgressPlugin(),
+
+    new TestPlugin(),
 
     // new NpmInstallPlugin(),
 
