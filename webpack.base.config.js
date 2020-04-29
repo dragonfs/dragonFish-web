@@ -4,7 +4,7 @@ const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
-const {TestPlugin} = require('./webpack-test-plugin/webpack-test-plugin');
+const { TestPlugin } = require("./webpack-test-plugin/webpack-test-plugin");
 // const NpmInstallPlugin = require("npm-install-webpack-plugin");
 const ROOT_PATH = process.cwd();
 const SRC_PATH = path.join(ROOT_PATH, "src");
@@ -115,7 +115,13 @@ module.exports = {
       {
         test: /\.js|jsx$/,
         exclude: /node_modules/,
-        use: ["babel-loader", "source-map-loader"],
+        use: [
+          "babel-loader",
+          "source-map-loader",
+          {
+            loader: require.resolve("ehome-react-skeleton"), // 在babel-loader之前配置ehome-react-skeleton
+          },
+        ],
         enforce: "pre",
       },
       { test: /\.ts|tsx?$/, loader: "ts-loader" },
