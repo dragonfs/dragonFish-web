@@ -2,11 +2,14 @@
   "compileOnSave": true,
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
-    "module":"esnext",
+    "module": "esnext",
     "baseUrl": ".",
-    "lib": ["dom", "es2015", "es2016"],
+    "lib": [
+      "dom",
+      "es2015",
+      "es2016"
+    ],
     "allowJs": true,
-    // "checkJs": true,
     "declaration": true,
     "declarationDir": "./d",
     "noImplicitAny": false,
@@ -14,7 +17,7 @@
     "removeComments": true,
     "preserveConstEnums": true,
     "sourceMap": true,
-    "target":"es6",
+    "target": "es6",
     "jsx": "react",
     "esModuleInterop": true,
     "emitDecoratorMetadata": true,
@@ -23,10 +26,22 @@
     "version": true,
     "outDir": "./compile",
     "paths": {
-      "src/*": ["src/*"],
+      "src/*": [
+        "src/*"
+      ]
     },
+    "skipLibCheck": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true
   },
-  
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", "**/*.spec.ts"]
+  "include": [
+    "src/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
 }
